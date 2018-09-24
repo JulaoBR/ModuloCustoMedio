@@ -292,6 +292,25 @@ namespace ProEstoque.DAO
             }
         }
 
+        public DataTable BuscaConsumoMedio(int codigo, string data1, string data2)      
+        {
+            DataTable tb = new DataTable();
+            try
+            {
+
+                using (SQLiteDataAdapter da = new SQLiteDataAdapter("SELECT A.reg_cod, B.pro_descricao, C.tipo_descricao, A.reg_quantidade, B.pro_unidade_medida, A.reg_valor_unitario,  A.reg_valor_total, A.reg_data_operacao FROM registro_saida AS A JOIN produto AS B JOIN tipo_produto AS C WHERE A.pro_cod = B.pro_cod AND A.tipo_cod = C.tipo_cod AND B.pro_cod = '"+codigo+"' AND A.reg_data_operacao BETWEEN '" + data1 + "' AND '" + data2 + "'", conexao.StringConexao))
+                {
+                    da.Fill(tb);
+                    conexao.Desconectar();
+                    return tb;
+                }
+            }
+            catch
+            {
+                return tb;
+            }
+        }
+
         public int BuscaUltimoId() 
         {
             DataTable tb = new DataTable();

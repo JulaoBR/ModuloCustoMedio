@@ -121,6 +121,10 @@ namespace ProEstoque.CONTROL
                 produto.categoria = dt.Rows[0]["pro_categoria"].ToString();
                 produto.unidade_medida = dt.Rows[0]["pro_unidade_medida"].ToString();
                 produto.estoque_minimo = Convert.ToDecimal(dt.Rows[0]["pro_estoque_minimo"].ToString());
+                if (dt.Rows[0]["pro_estoque_seguranca"].ToString() != "")
+                    produto.estoque_seguranca = Convert.ToDecimal(dt.Rows[0]["pro_estoque_seguranca"].ToString());
+                else
+                    produto.estoque_seguranca = 0;
                 produto.dataOperacao = Convert.ToDateTime(dt.Rows[0]["pro_data_operacao"].ToString());
 
                 return produto;

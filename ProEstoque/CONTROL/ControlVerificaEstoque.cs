@@ -31,25 +31,38 @@ namespace ProEstoque.CONTROL
                     // indicador for = 0 email nao enviado
                     // indicador for = 1 email ja enviado
 
-                    if (indicador != 0)
+                    if (indicador == 2)
                     {
                         MessageBox.Show("O produto " + registro.descricao + " entro na zona de abastecimento\n" + "Estoque minimo: " + registro.estoque_minimo + "\nEstoque atual: " + saldo_novo, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         MessageBox.Show("O produto " + registro.descricao + " entro na zona de abastecimento \n" + " Estoque minimo: " + registro.estoque_minimo + "\nEstoque atual: " + saldo_novo, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        ControlEmail.EnviaEmail(registro);
-                        dao.Update(registro.codProduto, 1);
-                    }                  
+                        ControlEmail.EnviaEmailEstoqueMinimo(registro);
+                        dao.Update(registro.codProduto, 2);
+                    }
                 }
-                else
+                else if(saldo_novo < registro.estoque_seguranca)
                 {
+                    var indicador = dao.BuscaIndicador(registro.codProduto);
+                    // indicador for = 0 email nao enviado
+                    // indicador for = 1 email ja enviado
 
+                    if (indicador == 1)
+                    {
+                        MessageBox.Show("O produto " + registro.descricao + " entro na zona de segurança\n" + "Estoque de segurança: " + registro.estoque_minimo + "\nEstoque atual: " + saldo_novo, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("O produto " + registro.descricao + " entro na zona de segurança\n" + "Estoque segurança: " + registro.estoque_seguranca + "\nEstoque atual: " + saldo_novo, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ControlEmail.EnviaEmailEstoqueSeguranca(registro);
+                        dao.Update(registro.codProduto, 1);
+                    }
                 }
             }
             catch
             {
-
+                
             }
         }
     }

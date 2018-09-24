@@ -11,6 +11,7 @@ namespace ProEstoque
         private decimal valor_total = 0;
         private decimal valor_unitario = 0;
         private decimal estoque_minimo = 0;
+        private decimal estoque_seguranca = 0;
         private decimal saldo = 0;
 
         public frmSaida()
@@ -70,9 +71,20 @@ namespace ProEstoque
                 registro.quantidade = Convert.ToDecimal(txtQuantidade.Text);
                 registro.dataOperacao = Convert.ToDateTime(dataOperacao.Text);
                 registro.descricao = txtDescricao.Text;
-
+                registro.valorUnitario = valor_unitario;
+                registro.valorTotal = valor_unitario * registro.quantidade;
                 registro.estoque_minimo = estoque_minimo;
+                registro.estoque_seguranca = estoque_seguranca;
                 registro.saldo = saldo;
+
+                if (registro.quantidade > saldo)
+                {
+                    MessageBox.Show("Quantidade insuficiente para realizar esta operação!\n"+
+                                    "Quantidade em estoque: " + saldo 
+                        ,"ATENÇÃO!", MessageBoxButtons.OK , MessageBoxIcon.Warning);
+                    return;
+                }
+
                 
                 if (control.InserirSaida(registro))
                 {
@@ -138,6 +150,7 @@ namespace ProEstoque
                 produto = control.BuscaProduto(codigo);
 
                 estoque_minimo = produto.estoque_minimo;
+                estoque_seguranca = produto.estoque_seguranca;
                 txtCodProduto.Text = Convert.ToString(produto.codProduto);
                 txtDescricao.Text = produto.descricao;
             }

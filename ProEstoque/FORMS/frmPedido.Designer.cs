@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedido));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.rbCotacao = new System.Windows.Forms.RadioButton();
+            this.rbPedido = new System.Windows.Forms.RadioButton();
             this.txtIdPedido = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtDataPrevista = new System.Windows.Forms.DateTimePicker();
             this.txtDataPedido = new System.Windows.Forms.DateTimePicker();
@@ -97,23 +99,38 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.rbCotacao);
+            this.panel1.Controls.Add(this.rbPedido);
             this.panel1.Controls.Add(this.txtIdPedido);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 61);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 100;
             // 
-            // label4
+            // rbCotacao
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(671, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "ESC Sair";
+            this.rbCotacao.AutoSize = true;
+            this.rbCotacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCotacao.Location = new System.Drawing.Point(538, 25);
+            this.rbCotacao.Name = "rbCotacao";
+            this.rbCotacao.Size = new System.Drawing.Size(98, 20);
+            this.rbCotacao.TabIndex = 23;
+            this.rbCotacao.Text = "COTAÇÃO";
+            this.rbCotacao.UseVisualStyleBackColor = true;
+            this.rbCotacao.CheckedChanged += new System.EventHandler(this.rbCotacao_CheckedChanged);
+            // 
+            // rbPedido
+            // 
+            this.rbPedido.AutoSize = true;
+            this.rbPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbPedido.Location = new System.Drawing.Point(436, 25);
+            this.rbPedido.Name = "rbPedido";
+            this.rbPedido.Size = new System.Drawing.Size(83, 20);
+            this.rbPedido.TabIndex = 22;
+            this.rbPedido.Text = "PEDIDO";
+            this.rbPedido.UseVisualStyleBackColor = true;
+            this.rbPedido.CheckedChanged += new System.EventHandler(this.rbPedido_CheckedChanged);
             // 
             // txtIdPedido
             // 
@@ -132,9 +149,19 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(10, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 24);
+            this.label1.Size = new System.Drawing.Size(193, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "FORMALIZAÇÃO DO PEDIDO";
+            this.label1.Text = "PEDIDO/COTAÇÃO";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(801, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "ESC Sair";
             // 
             // panel2
             // 
@@ -144,7 +171,7 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(13, 80);
+            this.panel2.Location = new System.Drawing.Point(12, 182);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 50);
             this.panel2.TabIndex = 1;
@@ -155,8 +182,7 @@
             this.txtDataPrevista.Location = new System.Drawing.Point(324, 25);
             this.txtDataPrevista.Name = "txtDataPrevista";
             this.txtDataPrevista.Size = new System.Drawing.Size(128, 20);
-            this.txtDataPrevista.TabIndex = 6;
-            this.txtDataPrevista.TabStop = false;
+            this.txtDataPrevista.TabIndex = 4;
             // 
             // txtDataPedido
             // 
@@ -164,7 +190,7 @@
             this.txtDataPedido.Location = new System.Drawing.Point(176, 25);
             this.txtDataPedido.Name = "txtDataPedido";
             this.txtDataPedido.Size = new System.Drawing.Size(119, 20);
-            this.txtDataPedido.TabIndex = 5;
+            this.txtDataPedido.TabIndex = 3;
             // 
             // label8
             // 
@@ -207,10 +233,10 @@
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.txtContato);
             this.panel3.Controls.Add(this.cbFornecedor);
-            this.panel3.Location = new System.Drawing.Point(13, 136);
+            this.panel3.Location = new System.Drawing.Point(12, 80);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(733, 96);
-            this.panel3.TabIndex = 2;
+            this.panel3.TabIndex = 0;
             // 
             // label3
             // 
@@ -283,7 +309,7 @@
             this.txtContato.MaxLength = 20;
             this.txtContato.Name = "txtContato";
             this.txtContato.Size = new System.Drawing.Size(166, 20);
-            this.txtContato.TabIndex = 3;
+            this.txtContato.TabIndex = 2;
             this.txtContato.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // cbFornecedor
@@ -293,7 +319,7 @@
             this.cbFornecedor.Location = new System.Drawing.Point(4, 23);
             this.cbFornecedor.Name = "cbFornecedor";
             this.cbFornecedor.Size = new System.Drawing.Size(521, 21);
-            this.cbFornecedor.TabIndex = 2;
+            this.cbFornecedor.TabIndex = 1;
             this.cbFornecedor.SelectedValueChanged += new System.EventHandler(this.cbFornecedor_SelectedValueChanged);
             this.cbFornecedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox1_KeyDown);
             // 
@@ -324,7 +350,7 @@
             this.txtFormaPagamento.MaxLength = 20;
             this.txtFormaPagamento.Name = "txtFormaPagamento";
             this.txtFormaPagamento.Size = new System.Drawing.Size(180, 20);
-            this.txtFormaPagamento.TabIndex = 4;
+            this.txtFormaPagamento.TabIndex = 5;
             this.txtFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFormaPagamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
@@ -342,10 +368,10 @@
             this.panel4.Controls.Add(this.txtValorUnitario);
             this.panel4.Controls.Add(this.txtQuantidade);
             this.panel4.Controls.Add(this.cbProduto);
-            this.panel4.Location = new System.Drawing.Point(13, 303);
+            this.panel4.Location = new System.Drawing.Point(12, 303);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 101);
-            this.panel4.TabIndex = 4;
+            this.panel4.TabIndex = 3;
             // 
             // btnAdicionarProduto
             // 
@@ -354,7 +380,7 @@
             this.btnAdicionarProduto.Location = new System.Drawing.Point(653, 65);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
             this.btnAdicionarProduto.Size = new System.Drawing.Size(75, 23);
-            this.btnAdicionarProduto.TabIndex = 13;
+            this.btnAdicionarProduto.TabIndex = 11;
             this.btnAdicionarProduto.Text = "ADD";
             this.btnAdicionarProduto.UseVisualStyleBackColor = false;
             this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
@@ -427,7 +453,7 @@
             this.txtValorFrete.MaxLength = 11;
             this.txtValorFrete.Name = "txtValorFrete";
             this.txtValorFrete.Size = new System.Drawing.Size(166, 20);
-            this.txtValorFrete.TabIndex = 11;
+            this.txtValorFrete.TabIndex = 10;
             this.txtValorFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorFrete.TextChanged += new System.EventHandler(this.txtValorFrete_TextChanged);
             this.txtValorFrete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox5_KeyDown);
@@ -439,7 +465,7 @@
             this.txtValorUnitario.MaxLength = 11;
             this.txtValorUnitario.Name = "txtValorUnitario";
             this.txtValorUnitario.Size = new System.Drawing.Size(166, 20);
-            this.txtValorUnitario.TabIndex = 10;
+            this.txtValorUnitario.TabIndex = 9;
             this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorUnitario.TextChanged += new System.EventHandler(this.txtValorUnitario_TextChanged);
             this.txtValorUnitario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
@@ -451,7 +477,7 @@
             this.txtQuantidade.MaxLength = 11;
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(166, 20);
-            this.txtQuantidade.TabIndex = 9;
+            this.txtQuantidade.TabIndex = 8;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
             this.txtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
@@ -464,7 +490,7 @@
             this.cbProduto.Location = new System.Drawing.Point(4, 27);
             this.cbProduto.Name = "cbProduto";
             this.cbProduto.Size = new System.Drawing.Size(521, 21);
-            this.cbProduto.TabIndex = 8;
+            this.cbProduto.TabIndex = 7;
             this.cbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox2_KeyDown);
             // 
             // txtObservacao
@@ -491,8 +517,8 @@
             // 
             // grid
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -539,10 +565,10 @@
             // valorUnitario
             // 
             this.valorUnitario.DataPropertyName = "valorUnitario";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.valorUnitario.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.valorUnitario.DefaultCellStyle = dataGridViewCellStyle10;
             this.valorUnitario.HeaderText = "VL UNITARIO";
             this.valorUnitario.Name = "valorUnitario";
             this.valorUnitario.ReadOnly = true;
@@ -551,10 +577,10 @@
             // 
             this.valorFrete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.valorFrete.DataPropertyName = "valorFrete";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.valorFrete.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Format = "C2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.valorFrete.DefaultCellStyle = dataGridViewCellStyle11;
             this.valorFrete.HeaderText = "VL FRETE";
             this.valorFrete.Name = "valorFrete";
             this.valorFrete.ReadOnly = true;
@@ -564,10 +590,10 @@
             // 
             this.valorTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.valorTotal.DataPropertyName = "valorTotal";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.valorTotal.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Format = "C2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.valorTotal.DefaultCellStyle = dataGridViewCellStyle12;
             this.valorTotal.HeaderText = "VL TOTAL";
             this.valorTotal.Name = "valorTotal";
             this.valorTotal.ReadOnly = true;
@@ -576,7 +602,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Image = global::ProEstoque.Properties.Resources.Save_icon;
-            this.btnSalvar.Location = new System.Drawing.Point(425, 593);
+            this.btnSalvar.Location = new System.Drawing.Point(755, 34);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(104, 67);
@@ -590,7 +616,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Image = global::ProEstoque.Properties.Resources.Close_2_icon;
-            this.btnCancelar.Location = new System.Drawing.Point(641, 593);
+            this.btnCancelar.Location = new System.Drawing.Point(755, 198);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 67);
@@ -604,7 +630,7 @@
             // btnEditar
             // 
             this.btnEditar.Image = global::ProEstoque.Properties.Resources.Actions_document_edit_icon;
-            this.btnEditar.Location = new System.Drawing.Point(533, 592);
+            this.btnEditar.Location = new System.Drawing.Point(755, 113);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(104, 67);
@@ -643,7 +669,7 @@
             this.panel5.Location = new System.Drawing.Point(12, 238);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(732, 59);
-            this.panel5.TabIndex = 3;
+            this.panel5.TabIndex = 2;
             // 
             // cbFormaPagamento
             // 
@@ -656,14 +682,14 @@
             this.cbFormaPagamento.Location = new System.Drawing.Point(245, 25);
             this.cbFormaPagamento.Name = "cbFormaPagamento";
             this.cbFormaPagamento.Size = new System.Drawing.Size(473, 21);
-            this.cbFormaPagamento.TabIndex = 13;
+            this.cbFormaPagamento.TabIndex = 6;
             // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.label18);
             this.panel6.Controls.Add(this.txtObservacao);
-            this.panel6.Location = new System.Drawing.Point(13, 512);
+            this.panel6.Location = new System.Drawing.Point(13, 510);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(734, 76);
             this.panel6.TabIndex = 19;
@@ -672,9 +698,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 667);
+            this.ClientSize = new System.Drawing.Size(870, 596);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEditar);
@@ -688,7 +715,7 @@
             this.MinimizeBox = false;
             this.Name = "frmPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FORMALIZAÇÃO PEDIDO";
+            this.Text = "PEDIDO/COTAÇÃO";
             this.Load += new System.EventHandler(this.frmPedido_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPedido_KeyDown);
             this.panel1.ResumeLayout(false);
@@ -705,6 +732,7 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -762,5 +790,7 @@
         private System.Windows.Forms.ComboBox cbFormaPagamento;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton rbCotacao;
+        private System.Windows.Forms.RadioButton rbPedido;
     }
 }

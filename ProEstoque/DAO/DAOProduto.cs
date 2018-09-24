@@ -23,12 +23,13 @@ namespace ProEstoque.DAO
             {
                 SQLiteCommand cmd = new SQLiteCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO produto(pro_descricao, pro_categoria, pro_unidade_medida, pro_estoque_minimo, pro_data_operacao)" +
-                    "VALUES (@descricao, @categoria, @medida, @estMinimo, @dtOperacao)";
+                cmd.CommandText = "INSERT INTO produto(pro_descricao, pro_categoria, pro_unidade_medida, pro_estoque_minimo, pro_estoque_seguranca, pro_data_operacao)" +
+                    "VALUES (@descricao, @categoria, @medida, @estMinimo, @estSeguranca, @dtOperacao)";
                 cmd.Parameters.AddWithValue("@descricao", modelo.descricao);
                 cmd.Parameters.AddWithValue("@categoria", modelo.categoria);
                 cmd.Parameters.AddWithValue("@medida", modelo.unidade_medida);
                 cmd.Parameters.AddWithValue("@estMinimo", modelo.estoque_minimo);
+                cmd.Parameters.AddWithValue("@estSeguranca", modelo.estoque_seguranca);
                 cmd.Parameters.AddWithValue("@dtOperacao", modelo.dataOperacao);
 
                 conexao.Conectar();
@@ -97,11 +98,12 @@ namespace ProEstoque.DAO
             {
                 SQLiteCommand cmd = new SQLiteCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "UPDATE produto SET pro_descricao = @descricao, pro_categoria = @categoria, pro_unidade_medida = @medida, pro_estoque_minimo = @estMinimo WHERE pro_cod = @cod";
+                cmd.CommandText = "UPDATE produto SET pro_descricao = @descricao, pro_categoria = @categoria, pro_unidade_medida = @medida, pro_estoque_minimo = @estMinimo, pro_estoque_seguranca = @estSeguranca WHERE pro_cod = @cod";
                 cmd.Parameters.AddWithValue("@descricao", modelo.descricao);
                 cmd.Parameters.AddWithValue("@categoria", modelo.categoria);
                 cmd.Parameters.AddWithValue("@medida", modelo.unidade_medida);
                 cmd.Parameters.AddWithValue("@estMinimo", modelo.estoque_minimo);
+                cmd.Parameters.AddWithValue("@estSeguranca", modelo.estoque_seguranca);
                 cmd.Parameters.AddWithValue("@cod", modelo.codProduto);
 
                 conexao.Conectar();
@@ -125,7 +127,7 @@ namespace ProEstoque.DAO
             try
             {
 
-                using (SQLiteDataAdapter da = new SQLiteDataAdapter("SELECT pro_cod 'CODIGO', pro_descricao 'DESCRIÇÃO', pro_categoria 'CATEGORIA', pro_unidade_medida 'MEDIDA', pro_estoque_minimo 'QTD MINIMA', pro_data_operacao 'DATA CADASTRO' FROM produto WHERE pro_cod  LIKE '%" + codigo+ "%' AND pro_descricao LIKE '%" + descricao + "%' AND pro_categoria LIKE '%" + categotia + "%'", conexao.StringConexao))
+                using (SQLiteDataAdapter da = new SQLiteDataAdapter("SELECT pro_cod 'CODIGO', pro_descricao 'DESCRIÇÃO', pro_categoria 'CATEGORIA', pro_unidade_medida 'MEDIDA', pro_estoque_minimo 'QTD MINIMA', pro_estoque_seguranca 'QTD SEGURANÇA', pro_data_operacao 'DATA CADASTRO' FROM produto WHERE pro_cod  LIKE '%" + codigo+ "%' AND pro_descricao LIKE '%" + descricao + "%' AND pro_categoria LIKE '%" + categotia + "%'", conexao.StringConexao))
                 {
                     da.Fill(tb);
                     conexao.Desconectar();
@@ -163,7 +165,7 @@ namespace ProEstoque.DAO
             try
             {
 
-                using (SQLiteDataAdapter da = new SQLiteDataAdapter("SELECT pro_cod , pro_descricao ,pro_categoria, pro_unidade_medida, pro_estoque_minimo, pro_data_operacao  FROM produto WHERE pro_cod = '"+codigo+"' ", conexao.StringConexao))
+                using (SQLiteDataAdapter da = new SQLiteDataAdapter("SELECT pro_cod , pro_descricao ,pro_categoria, pro_unidade_medida, pro_estoque_minimo, pro_estoque_seguranca, pro_data_operacao  FROM produto WHERE pro_cod = '"+codigo+"' ", conexao.StringConexao))
                 {
                     da.Fill(tb);
                     conexao.Desconectar();

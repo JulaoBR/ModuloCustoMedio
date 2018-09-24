@@ -24,18 +24,7 @@ namespace ProEstoque.FORMS
 
         private void gridListaItens_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                int codigo = Convert.ToInt32(gridListaItens.CurrentRow.Cells[0].Value.ToString());
-                string descricao = gridListaItens.CurrentRow.Cells[1].Value.ToString();
 
-                frmListaEntrada lista = new frmListaEntrada(codigo, descricao);
-                lista.ShowDialog();
-            }
-            catch
-            {
-
-            }
         }
 
         private void PreencheGrid(List<ModelRegistro> dt)
@@ -54,6 +43,16 @@ namespace ProEstoque.FORMS
             int i = 0;
             foreach (var item in dt)
             {
+                //VERIFICA ESTOQUE SEGURANCA
+                if (item.quantidade < item.estoque_seguranca)
+                {
+                    DataGridViewRow row = gridListaItens.Rows[i];
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                    cont++;
+                }
+
+                //VERIFICA ESTOQUE MINIMO
                 if (item.quantidade < item.estoque_minimo)
                 {
                     DataGridViewRow row = gridListaItens.Rows[i];
@@ -153,6 +152,52 @@ namespace ProEstoque.FORMS
             {
                 labelInformacao.Text = "O PRODUTO " + descricao + " NÃO ESTA NA ZONA DE ESTOQUE MINIMO";
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int codigo = Convert.ToInt32(gridListaItens.CurrentRow.Cells[0].Value.ToString());
+                string descricao = gridListaItens.CurrentRow.Cells[1].Value.ToString();
+
+                frmListaEntrada lista = new frmListaEntrada(codigo, descricao);
+                lista.ShowDialog();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int codigo = Convert.ToInt32(gridListaItens.CurrentRow.Cells[0].Value.ToString());
+                frmConsumoMedio consumo = new frmConsumoMedio(codigo);
+                consumo.ShowDialog();
+            }
+            catch
+            {
+                throw;
+            }
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int codigo = Convert.ToInt32(gridListaItens.CurrentRow.Cells[0].Value.ToString());
+                frmVisualizarPedido pedido = new frmVisualizarPedido(codigo);
+                pedido.ShowDialog();
+            }
+            catch
+            {
+                throw;
+            }
+            
         }
     }
 }

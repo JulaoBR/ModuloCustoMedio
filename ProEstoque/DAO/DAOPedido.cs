@@ -170,6 +170,25 @@ namespace ProEstoque.DAO
             }
         }
 
+        public DataTable BuscaPedidoExibir(int codigo)
+        {
+            DataTable tb = new DataTable();
+            try
+            {
+
+                using (SQLiteDataAdapter da = new SQLiteDataAdapter("SELECT A.ped_cod, E.for_descricao, E.for_email, E.for_prazo_entrega, A.ped_data_pedido, A.ped_data_prevista, A.ped_contato, A.ped_observacao, A.ped_forma_pagamento, A.ped_condicao_pagamento, A.ped_status FROM pedido AS A JOIN produto AS B JOIN pedido_registro AS C JOIN registro_entrada AS D JOIN fornecedor AS E WHERE A.ped_cod = C.ped_cod AND B.pro_cod = D.pro_cod AND C.reg_cod = D.reg_cod AND D.for_cod = E.for_cod AND A.ped_status = 0 AND B.pro_cod = '" + codigo + "' ORDER BY A.ped_data_prevista LIMIT 1", conexao.StringConexao))
+                {
+                    da.Fill(tb);
+                    conexao.Desconectar();
+                    return tb;
+                }
+            }
+            catch
+            {
+                return tb;
+            }
+        }
+
         public DataTable BuscaRegistroEntradaPedido(int codigo)
         {
             DataTable tb = new DataTable();

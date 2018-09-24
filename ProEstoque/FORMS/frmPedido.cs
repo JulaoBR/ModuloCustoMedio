@@ -14,6 +14,7 @@ namespace ProEstoque.FORMS
         private decimal quantidade = 0;
         private decimal frete = 0;
         private decimal total = 0;
+        private int opcao = 0; // 1 = pedido e 2 = cotação
         private List<ModelRegistro> listaRegistro = new List<ModelRegistro>();
         private ModelPedido modeloPedido = new ModelPedido();
 
@@ -372,7 +373,6 @@ namespace ProEstoque.FORMS
                 ControlPedido pedido = new ControlPedido();
                 modeloPedido.ped_cod = pedido.BuscaUltimoIdPedido() + 1;
 
-
                 modeloPedido.ped_data_pedido = Convert.ToDateTime(txtDataPedido.Text);
                 modeloPedido.ped_data_prevista = Convert.ToDateTime(txtDataPrevista.Text);
                 modeloPedido.ped_contato = txtContato.Text;
@@ -385,32 +385,70 @@ namespace ProEstoque.FORMS
                 modeloPedido.for_email = txtEmail.Text;
                 modeloPedido.for_prazo_entrega = Convert.ToInt32(txtPrazo.Text);
 
-                modeloPedido.ped_condicao_pagamento = cbFormaPagamento.Text;             
+                modeloPedido.ped_condicao_pagamento = cbFormaPagamento.Text;
 
-                if (pedido.Inserir(modeloPedido, listaRegistro))
+                switch (opcao)
                 {
-                    //Comando que questiona ao usuário se relamente deseja sair do programa
-                    DialogResult result = MessageBox.Show("Deseja imprimir a formalização?",
-                       "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        ImprimirPedido();
-                    }
-                    LimpaProduto();
-                    LimpaFornecedor();
-                    ZeraTudo();
-                    listaRegistro.Clear();
-                    AtualizaNumeroPedido();
-                    this.Refresh();
-                }
-                else
-                {
-                    MessageBox.Show("Confira os campos digitados", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                    case 1:
+                        SalvaPedido();
+                        break;
+                    case 2:
+                        modeloPedido.ped_valor_frete = frete;
+                        SalvarCotacao();
+                        break;
+                    default:
+                        MessageBox.Show("Selecione uma opção: PEDIDO ou COTAÇÃO", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }              
             }
             catch
             {
                 MessageBox.Show("Preencha todos os campos", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void SalvarCotacao()
+        {
+            ControlCotacao cotacao = new ControlCotacao();
+            if (cotacao.Inserir(modeloPedido, listaRegistro))
+            {               
+                LimpaProduto();
+                LimpaFornecedor();
+                ZeraTudo();
+                listaRegistro.Clear();
+                this.Refresh();
+                rbCotacao.Checked = false;
+            }
+            else
+            {
+                MessageBox.Show("Confira os campos digitados", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void SalvaPedido()
+        {
+            ControlPedido pedido = new ControlPedido();
+            if (pedido.Inserir(modeloPedido, listaRegistro))
+            {
+                //Comando que questiona ao usuário se relamente deseja sair do programa
+                DialogResult result = MessageBox.Show("Deseja imprimir a formalização?",
+                   "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    ImprimirPedido();
+                }
+                LimpaProduto();
+                LimpaFornecedor();
+                ZeraTudo();
+                listaRegistro.Clear();
+                AtualizaNumeroPedido();
+                this.Refresh();
+                rbPedido.Checked = false;
+            }
+            else
+            {
+                MessageBox.Show("Confira os campos digitados", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -476,10 +514,11 @@ namespace ProEstoque.FORMS
 
                         default:
                             aux = aux.AddDays(1);
-                            if(ControlPedido.VerificaFeriado(aux) == false)
+                            if(ControlPedido.VerificaFeriado(aux) == true)
                                 i++;
                             break;
                     }
+                    i++;
                 }
 
                 txtDataPrevista.Text = aux.ToString();
@@ -505,6 +544,16 @@ namespace ProEstoque.FORMS
             {
                 this.Close();
             }
+        }
+
+        private void rbPedido_CheckedChanged(object sender, EventArgs e)
+        {
+            opcao = 1;
+        }
+
+        private void rbCotacao_CheckedChanged(object sender, EventArgs e)
+        {
+            opcao = 2;
         }
     }
  }

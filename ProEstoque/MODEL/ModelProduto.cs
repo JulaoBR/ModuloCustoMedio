@@ -13,7 +13,8 @@ namespace ProEstoque.MODEL
         public string fornecedor { get; set; }
         public string categoria { get; set; }
         public string unidade_medida { get; set; }
-        public Decimal estoque_minimo { get; set; }
+        public decimal estoque_minimo { get; set; }
+        public decimal estoque_seguranca { get; set; }
         public DateTime dataOperacao { get; set; }
     }
 }

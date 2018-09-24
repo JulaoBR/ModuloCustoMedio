@@ -15,6 +15,8 @@ namespace ProEstoque.MODEL
         public string ped_status { get; set; }
         public int status { get; set; }
         public decimal ped_quantidade { get; set; }
+        public decimal ped_valor_unitario { get; set; }
+        public decimal ped_valor_frete { get; set; }
         public string pro_descricao { get; set; }
 
         //IMPRESSAO

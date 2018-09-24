@@ -99,6 +99,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CONTROL\ControlCategoria.cs" />
+    <Compile Include="CONTROL\ControlCotacao.cs" />
     <Compile Include="CONTROL\ControlEmail.cs" />
     <Compile Include="CONTROL\ControlFormatacao.cs" />
     <Compile Include="CONTROL\ControlFornecedor.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="DAO\ClasseConexao.cs" />
     <Compile Include="DAO\Conexao.cs" />
     <Compile Include="DAO\DAOCategoria.cs" />
+    <Compile Include="DAO\DAOCotacao.cs" />
     <Compile Include="DAO\DAOEmail.cs" />
     <Compile Include="DAO\DAOFornecedor.cs" />
     <Compile Include="DAO\DAOPedido.cs" />
@@ -150,6 +152,12 @@
     </Compile>
     <Compile Include="FORMS\frmBuscaFornecedor.Designer.cs">
       <DependentUpon>frmBuscaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmConsumoMedio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmConsumoMedio.Designer.cs">
+      <DependentUpon>frmConsumoMedio.cs</DependentUpon>
     </Compile>
     <Compile Include="FORMS\frmOpcaoRelatorio.cs">
       <SubType>Form</SubType>
@@ -229,7 +237,14 @@
     <Compile Include="FORMS\frmSaida.Designer.cs">
       <DependentUpon>frmSaida.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\frmVisualizarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmVisualizarPedido.Designer.cs">
+      <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="MODEL\ModelCategoria.cs" />
+    <Compile Include="MODEL\ModelConsumoMedeio.cs" />
     <Compile Include="MODEL\ModelFornecedor.cs" />
     <Compile Include="MODEL\ModelPedido.cs" />
     <Compile Include="MODEL\ModelProduto.cs" />
@@ -255,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmBuscaFornecedor.resx">
       <DependentUpon>frmBuscaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmConsumoMedio.resx">
+      <DependentUpon>frmConsumoMedio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmOpcaoRelatorio.resx">
       <DependentUpon>frmOpcaoRelatorio.cs</DependentUpon>
@@ -294,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmSaida.resx">
       <DependentUpon>frmSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmVisualizarPedido.resx">
+      <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\relatorioRegistro.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -139,6 +139,32 @@ namespace ProEstoque
             }
         }
 
+       private void NotificacaoPrazoEntrega()
+        {
+            foreach (var item in dt)
+            {
+                TimeSpan date = DateTime.Now - item.ped_data_prevista;
+                int totalDias = date.Days;
+
+                if (item.ped_data_prevista < DateTime.Now.Date)
+                {
+                    MessageBox.Show("O produto "+item.pro_descricao+" esta atrasado a " + totalDias + " dias.","", MessageBoxButtons.OK , MessageBoxIcon.Warning);
+                }
+
+                switch (totalDias)
+                {
+                    case 10:
+                        MessageBox.Show("O produto " + item.pro_descricao + " atingiu " + totalDias + " dias, para ser entregue.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    case 5:
+                        MessageBox.Show("O produto " + item.pro_descricao + " atingiu " + totalDias + " dias, para ser entregue.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             frmMenu_Load(sender, e);
@@ -181,7 +207,8 @@ namespace ProEstoque
                     btnAtualizar.Enabled = true;
                     configuraçãoToolStripMenuItem.Enabled = true;
 
-                    panelControle.Visible = false;                   
+                    panelControle.Visible = false;
+                    NotificacaoPrazoEntrega();
                     break;
                 default:
                     MessageBox.Show("Acesso negado","Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);

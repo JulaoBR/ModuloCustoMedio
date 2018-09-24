@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCodPedido = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtDataPedido = new System.Windows.Forms.TextBox();
@@ -72,7 +73,6 @@
             this.dataOperacao = new System.Windows.Forms.DateTimePicker();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtCodPedido = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProduto)).BeginInit();
             this.panel2.SuspendLayout();
@@ -105,8 +105,19 @@
             this.panel1.Location = new System.Drawing.Point(11, 23);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(748, 440);
+            this.panel1.Size = new System.Drawing.Size(748, 490);
             this.panel1.TabIndex = 0;
+            // 
+            // txtCodPedido
+            // 
+            this.txtCodPedido.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.txtCodPedido.ForeColor = System.Drawing.Color.White;
+            this.txtCodPedido.Location = new System.Drawing.Point(17, 19);
+            this.txtCodPedido.Name = "txtCodPedido";
+            this.txtCodPedido.ReadOnly = true;
+            this.txtCodPedido.Size = new System.Drawing.Size(91, 21);
+            this.txtCodPedido.TabIndex = 39;
+            this.txtCodPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
             // 
@@ -185,7 +196,7 @@
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.ReadOnly = true;
-            this.txtObservacao.Size = new System.Drawing.Size(718, 36);
+            this.txtObservacao.Size = new System.Drawing.Size(718, 44);
             this.txtObservacao.TabIndex = 33;
             this.txtObservacao.TabStop = false;
             // 
@@ -234,7 +245,7 @@
             this.gridProduto.Name = "gridProduto";
             this.gridProduto.RowHeadersVisible = false;
             this.gridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridProduto.Size = new System.Drawing.Size(718, 96);
+            this.gridProduto.Size = new System.Drawing.Size(718, 159);
             this.gridProduto.TabIndex = 28;
             this.gridProduto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridProduto_CellDoubleClick);
             // 
@@ -309,7 +320,7 @@
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.Color.Blue;
-            this.labelTotal.Location = new System.Drawing.Point(14, 414);
+            this.labelTotal.Location = new System.Drawing.Point(17, 464);
             this.labelTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(52, 18);
@@ -520,7 +531,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Image = global::ProEstoque.Properties.Resources.Close_2_icon;
-            this.btnCancelar.Location = new System.Drawing.Point(631, 367);
+            this.btnCancelar.Location = new System.Drawing.Point(634, 417);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 67);
@@ -535,7 +546,7 @@
             // 
             this.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSalvar.Image = global::ProEstoque.Properties.Resources.Save_icon;
-            this.btnSalvar.Location = new System.Drawing.Point(523, 367);
+            this.btnSalvar.Location = new System.Drawing.Point(526, 417);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(104, 67);
@@ -584,22 +595,11 @@
             this.label11.TabIndex = 28;
             this.label11.Text = "ESC sair";
             // 
-            // txtCodPedido
-            // 
-            this.txtCodPedido.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.txtCodPedido.ForeColor = System.Drawing.Color.White;
-            this.txtCodPedido.Location = new System.Drawing.Point(17, 19);
-            this.txtCodPedido.Name = "txtCodPedido";
-            this.txtCodPedido.ReadOnly = true;
-            this.txtCodPedido.Size = new System.Drawing.Size(91, 21);
-            this.txtCodPedido.TabIndex = 39;
-            this.txtCodPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // frmEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 474);
+            this.ClientSize = new System.Drawing.Size(773, 524);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;

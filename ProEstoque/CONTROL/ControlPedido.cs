@@ -303,6 +303,44 @@ namespace ProEstoque.CONTROL
             }
         }
 
+        public ModelPedido BuscaPedidoExibir(int codigo)
+        {
+            try
+            {
+                ModelPedido modelo = new ModelPedido();
+                DataTable dt = daoPedido.BuscaPedidoExibir(codigo);
+
+                if (dt.Rows.Count == 0)
+                    return null;
+
+                modelo.ped_cod = Convert.ToInt32(dt.Rows[0]["ped_cod"].ToString());
+                modelo.for_descricao = dt.Rows[0]["for_descricao"].ToString();
+                modelo.for_email = dt.Rows[0]["for_email"].ToString();
+                modelo.ped_contato = dt.Rows[0]["ped_contato"].ToString();
+                modelo.for_prazo_entrega = int.Parse(dt.Rows[0]["for_prazo_entrega"].ToString());
+                modelo.ped_data_pedido = Convert.ToDateTime(dt.Rows[0]["ped_data_pedido"].ToString());
+                modelo.ped_data_prevista = Convert.ToDateTime(dt.Rows[0]["ped_data_prevista"].ToString());
+                modelo.ped_condicao_pagamento = dt.Rows[0]["ped_condicao_pagamento"].ToString();
+                modelo.ped_forma_pagamento = dt.Rows[0]["ped_forma_pagamento"].ToString();
+                modelo.ped_observacao = dt.Rows[0]["ped_observacao"].ToString();
+                if (Convert.ToInt32(dt.Rows[0]["ped_status"].ToString()) == 0)
+                {
+                    modelo.ped_status = "Não Recebido";
+                }
+                else
+                {
+                    modelo.ped_status = "Recebido";
+                }
+
+                return modelo;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex, "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+        }
+
         public List<ModelRegistro> BuscaRegistroEntradaPedido(int codigo)
         {
             try

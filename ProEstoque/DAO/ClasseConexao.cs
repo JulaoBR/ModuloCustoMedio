@@ -8,7 +8,8 @@ namespace ProEstoque.DAO
         {
             get
             {
-                return @"Data Source = C:\BD_pro_estoque\banco.sqlite;Version=3;";
+                return @"Data Source=.\BancoDados\banco.sqlite;Version=3;";
+                //return @"Data Source = C:\BD_pro_estoque\banco.sqlite;Version=3;";
             }
         }
     }

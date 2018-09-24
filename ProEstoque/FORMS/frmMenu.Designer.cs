@@ -38,6 +38,8 @@
             this.ajustesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroFornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.totalDeProdutoUtilizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridProduto = new System.Windows.Forms.DataGridView();
             this.ped_data_pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pro_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,15 +52,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.panelControle = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txtPermissao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelControle = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txtPermissao = new System.Windows.Forms.TextBox();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnListaPedidos = new System.Windows.Forms.Button();
@@ -66,8 +68,6 @@
             this.btnListaItens = new System.Windows.Forms.Button();
             this.btnSaida = new System.Windows.Forms.Button();
             this.btnEntrada = new System.Windows.Forms.Button();
-            this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.totalDeProdutoUtilizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProduto)).BeginInit();
             this.panel1.SuspendLayout();
@@ -101,7 +101,7 @@
             // ajustesToolStripMenuItem
             // 
             this.ajustesToolStripMenuItem.Name = "ajustesToolStripMenuItem";
-            this.ajustesToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.ajustesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.ajustesToolStripMenuItem.Text = "Ajustes";
             this.ajustesToolStripMenuItem.Click += new System.EventHandler(this.ajustesToolStripMenuItem_Click);
             // 
@@ -109,7 +109,7 @@
             // 
             this.cadastroFornecedorToolStripMenuItem.Image = global::ProEstoque.Properties.Resources.Actions_list_add_user_icon;
             this.cadastroFornecedorToolStripMenuItem.Name = "cadastroFornecedorToolStripMenuItem";
-            this.cadastroFornecedorToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.cadastroFornecedorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.cadastroFornecedorToolStripMenuItem.Text = "Cadastro fornecedor";
             this.cadastroFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadastroFornecedorToolStripMenuItem_Click);
             // 
@@ -117,9 +117,24 @@
             // 
             this.cadastroProdutosToolStripMenuItem.Image = global::ProEstoque.Properties.Resources.Box_icon;
             this.cadastroProdutosToolStripMenuItem.Name = "cadastroProdutosToolStripMenuItem";
-            this.cadastroProdutosToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.cadastroProdutosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.cadastroProdutosToolStripMenuItem.Text = "Cadastro Produtos";
             this.cadastroProdutosToolStripMenuItem.Click += new System.EventHandler(this.cadastroProdutosToolStripMenuItem_Click);
+            // 
+            // relatoriosToolStripMenuItem
+            // 
+            this.relatoriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.totalDeProdutoUtilizadosToolStripMenuItem});
+            this.relatoriosToolStripMenuItem.Name = "relatoriosToolStripMenuItem";
+            this.relatoriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.relatoriosToolStripMenuItem.Text = "Relatorios";
+            // 
+            // totalDeProdutoUtilizadosToolStripMenuItem
+            // 
+            this.totalDeProdutoUtilizadosToolStripMenuItem.Name = "totalDeProdutoUtilizadosToolStripMenuItem";
+            this.totalDeProdutoUtilizadosToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.totalDeProdutoUtilizadosToolStripMenuItem.Text = "Total de produto utilizados";
+            this.totalDeProdutoUtilizadosToolStripMenuItem.Click += new System.EventHandler(this.totalDeProdutoUtilizadosToolStripMenuItem_Click);
             // 
             // gridProduto
             // 
@@ -218,7 +233,6 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtDescricao);
-            this.panel1.Controls.Add(this.panelControle);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel3);
@@ -269,46 +283,6 @@
             this.txtDescricao.TabIndex = 21;
             this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
-            // panelControle
-            // 
-            this.panelControle.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelControle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelControle.Controls.Add(this.label5);
-            this.panelControle.Controls.Add(this.button3);
-            this.panelControle.Controls.Add(this.txtPermissao);
-            this.panelControle.Location = new System.Drawing.Point(157, 166);
-            this.panelControle.Name = "panelControle";
-            this.panelControle.Size = new System.Drawing.Size(365, 100);
-            this.panelControle.TabIndex = 0;
-            this.panelControle.TabStop = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Digite a senha:";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(232, 62);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Acessar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // txtPermissao
-            // 
-            this.txtPermissao.Location = new System.Drawing.Point(26, 25);
-            this.txtPermissao.Name = "txtPermissao";
-            this.txtPermissao.Size = new System.Drawing.Size(315, 20);
-            this.txtPermissao.TabIndex = 0;
-            this.txtPermissao.UseSystemPasswordChar = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -356,6 +330,46 @@
             this.label1.Size = new System.Drawing.Size(75, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "PEDIDOS";
+            // 
+            // panelControle
+            // 
+            this.panelControle.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelControle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelControle.Controls.Add(this.label5);
+            this.panelControle.Controls.Add(this.button3);
+            this.panelControle.Controls.Add(this.txtPermissao);
+            this.panelControle.Location = new System.Drawing.Point(11, 427);
+            this.panelControle.Name = "panelControle";
+            this.panelControle.Size = new System.Drawing.Size(161, 100);
+            this.panelControle.TabIndex = 0;
+            this.panelControle.TabStop = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Digite a senha:";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(25, 62);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Acessar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txtPermissao
+            // 
+            this.txtPermissao.Location = new System.Drawing.Point(17, 25);
+            this.txtPermissao.Name = "txtPermissao";
+            this.txtPermissao.Size = new System.Drawing.Size(117, 20);
+            this.txtPermissao.TabIndex = 0;
+            this.txtPermissao.UseSystemPasswordChar = true;
             // 
             // btnAtualizar
             // 
@@ -409,7 +423,7 @@
             this.btnPedido.Size = new System.Drawing.Size(159, 62);
             this.btnPedido.TabIndex = 6;
             this.btnPedido.TabStop = false;
-            this.btnPedido.Text = "FORMALIZAÇÃO DE PEDIDO";
+            this.btnPedido.Text = "PEDIDO / COTAÇÃO";
             this.btnPedido.UseVisualStyleBackColor = true;
             this.btnPedido.Click += new System.EventHandler(this.button1_Click_2);
             // 
@@ -458,21 +472,6 @@
             this.btnEntrada.UseVisualStyleBackColor = true;
             this.btnEntrada.Click += new System.EventHandler(this.btnEntrada_Click);
             // 
-            // relatoriosToolStripMenuItem
-            // 
-            this.relatoriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.totalDeProdutoUtilizadosToolStripMenuItem});
-            this.relatoriosToolStripMenuItem.Name = "relatoriosToolStripMenuItem";
-            this.relatoriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.relatoriosToolStripMenuItem.Text = "Relatorios";
-            // 
-            // totalDeProdutoUtilizadosToolStripMenuItem
-            // 
-            this.totalDeProdutoUtilizadosToolStripMenuItem.Name = "totalDeProdutoUtilizadosToolStripMenuItem";
-            this.totalDeProdutoUtilizadosToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.totalDeProdutoUtilizadosToolStripMenuItem.Text = "Total de produto utilizados";
-            this.totalDeProdutoUtilizadosToolStripMenuItem.Click += new System.EventHandler(this.totalDeProdutoUtilizadosToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,6 +481,7 @@
             this.Controls.Add(this.btnListaPedidos);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelControle);
             this.Controls.Add(this.btnPedido);
             this.Controls.Add(this.btnListaItens);
             this.Controls.Add(this.btnSaida);

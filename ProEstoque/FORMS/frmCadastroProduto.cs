@@ -77,6 +77,7 @@ namespace ProEstoque
                 produto.categoria = cbCategoria.Text;
                 produto.unidade_medida = cbUnidadeMedida.Text;
                 produto.estoque_minimo = Convert.ToDecimal(txtEstoqueMinimo.Text);
+                produto.estoque_seguranca = Convert.ToDecimal(txtEstoqueSeguranca.Text);
 
                 switch (opcao)
                 {
@@ -109,6 +110,7 @@ namespace ProEstoque
             txtCodProduto.Clear();
             txtDescricao.Clear();
             txtEstoqueMinimo.Clear();
+            txtEstoqueSeguranca.Clear();
             cbCategoria.SelectedIndex = -1;
             cbUnidadeMedida.SelectedIndex = -1;
             cbFornecedor.SelectedIndex = -1;
@@ -148,6 +150,7 @@ namespace ProEstoque
                     txtCodProduto.Text = Convert.ToString(modelo.codProduto);
                     txtDescricao.Text = modelo.descricao;
                     txtEstoqueMinimo.Text = Convert.ToString(modelo.estoque_minimo);
+                    txtEstoqueSeguranca.Text = Convert.ToString(modelo.estoque_seguranca);
                     cbCategoria.Text = modelo.categoria;
                     cbUnidadeMedida.Text = modelo.unidade_medida;
 
@@ -357,6 +360,15 @@ namespace ProEstoque
         private void btnAddProduto_Click(object sender, EventArgs e)
         {
             AdicionaTipoProdutoLista();
+        }
+
+        private void txtEstoqueSeguranca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ControlFormatacao.Formatacao(ref txtEstoqueSeguranca);
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }      
 }

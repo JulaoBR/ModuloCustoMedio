@@ -174,6 +174,44 @@ namespace ProEstoque.CONTROL
             }
         }
 
+        public ModelConsumoMedeio BuscaConsumoMedio(int codigoPreduto, string data1, string data2)
+        {
+            try
+            {
+                DateTime dt1 = Convert.ToDateTime(data1);
+                DateTime dt2 = Convert.ToDateTime(data2);
+                var aux1 = dt1.ToString("yyyy-MM-dd 00:00:00");
+                var aux2 = dt2.ToString("yyyy-MM-dd 00:00:00");
+
+                TimeSpan date = dt2 - dt1;
+                int totalDias = date.Days;
+
+                var tabela = dao.BuscaConsumoMedio(codigoPreduto, aux1, aux2);
+                var modelo = new ModelConsumoMedeio();
+
+                if (tabela.Rows.Count > 0)
+                {
+                    foreach (DataRow row in tabela.Rows)
+                    {
+                        modelo.pro_descricao = row["pro_descricao"].ToString();
+                        modelo.pro_quantidade_total += Convert.ToDecimal(row["reg_quantidade"].ToString());
+                        modelo.valor_total += Convert.ToDecimal(row["reg_valor_total"].ToString());
+                    }
+
+                    modelo.media_total = modelo.pro_quantidade_total / totalDias;
+
+                    return modelo;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex, "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+        }
+
         public List<ModelRegistro> CalculaPercentual(int cod_fornecedor, int cod_produto, int tipo_de_busca)
         {
             try
@@ -382,7 +420,16 @@ namespace ProEstoque.CONTROL
                     modelo.codProduto = Convert.ToInt32(item["CODIGO"].ToString());
                     modelo.descricao = item["DESCRIÇÃO"].ToString();
                     modelo.categoria = item["CATEGORIA"].ToString();
-                    modelo.estoque_minimo = Convert.ToDecimal(item["QTD MINIMA"].ToString());
+                    if (item["QTD MINIMA"].ToString() != "")
+                        modelo.estoque_minimo = Convert.ToDecimal(item["QTD MINIMA"].ToString());
+                    else
+                        modelo.estoque_minimo = 0;
+
+                    if (item["QTD SEGURANÇA"].ToString() != "")
+                        modelo.estoque_seguranca = Convert.ToDecimal(item["QTD SEGURANÇA"].ToString());
+                    else
+                        modelo.estoque_seguranca = 0;
+
                     modelo.unidade_medida = item["MEDIDA"].ToString();
 
                     ModelRegistro aux = CustoMedio(modelo.codProduto);
